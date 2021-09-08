@@ -19,6 +19,9 @@ router.post('/login', auth.verifyToken, async (req, res, next) => {
   }
   try {
     var user = await User.findOne({ email });
+
+
+    
     if (!user) {
       return res.status(400).json({ error: 'Email not registered' });
     }
