@@ -7,9 +7,11 @@ let auth = require('../middleware/auth');
 router.get('/:username', auth.authorizeOpt, async (req, res, next) => {
   let id = req.user.userId;
   let username = req.params.username;
+
   try {
     let user = await User.findOne({ username });
     if (user) {
+      
       return res.status(201).json({ profile: user.displayUser(id) });
     } else {
       return res
