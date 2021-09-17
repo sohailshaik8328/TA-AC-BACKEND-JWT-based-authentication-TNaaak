@@ -40,7 +40,6 @@ router.get('/', auth.authorizeOpt, async (req, res, next) => {
   var limit = 20,
     skip = 0;
   var tags = await Article.find({}).distinct('tagList');
-  var authors = await User.find({}).distinct('_id');
 
   var tagList,
     author = null;
